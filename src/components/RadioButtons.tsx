@@ -1,6 +1,5 @@
 import { Box, Radio, RadioGroup, Stack } from "@chakra-ui/react";
 import { Role } from "../api/CustomerClient";
-import { capitalizeFirstLetter } from "../helpers/CapitalizeFirstLetter";
 
 interface RadioButtonsProps {
   value: Role;
@@ -16,7 +15,7 @@ export function RadioButtons({ value, setValue }: RadioButtonsProps) {
           p="2"
           backgroundColor={value === Role.ADMIN ? "#EBF8FF" : ""}
         >
-          <Radio value={Role.ADMIN}>{capitalizeFirstLetter(Role.ADMIN)}</Radio>
+          <Radio value={Role.ADMIN}>{Role.ADMIN}</Radio>
         </Box>
 
         <Box
@@ -24,9 +23,7 @@ export function RadioButtons({ value, setValue }: RadioButtonsProps) {
           p="2"
           backgroundColor={value === Role.MANAGER ? "#EBF8FF" : ""}
         >
-          <Radio value={Role.MANAGER}>
-            {capitalizeFirstLetter(Role.MANAGER)}
-          </Radio>
+          <Radio value={Role.MANAGER}>{Role.MANAGER}</Radio>
         </Box>
       </Stack>
     </RadioGroup>

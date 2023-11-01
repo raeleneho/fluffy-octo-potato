@@ -1,5 +1,4 @@
 import { Avatar, Box, HStack, Text } from "@chakra-ui/react";
-import { capitalizeFirstLetter } from "../helpers/CapitalizeFirstLetter";
 
 interface UserCardProps {
   name: string;
@@ -9,17 +8,20 @@ interface UserCardProps {
 function UserCard({ name, role }: UserCardProps) {
   const extractFirstName = (fullName: string) => fullName.split(" ")[0];
 
+  const capitalizeFirstLetter = (word: string) =>
+    word.charAt(0) + word.slice(1).toLowerCase();
+
   return (
-    <HStack spacing={4}>
+    <HStack spacing={4} data-test-id="user-card">
       <Avatar
         borderRadius="md"
-        color="blue.400"
-        backgroundColor={"blue.50"}
+        color="brandBlue.500"
+        backgroundColor="brandBlue.100"
         name={extractFirstName(name)}
       />
       <Box>
         <Text fontSize="xl">{name}</Text>
-        <Text fontSize="md" color="gray.500">
+        <Text fontSize="sm" color="brandGray.400">
           {capitalizeFirstLetter(role)}
         </Text>
       </Box>

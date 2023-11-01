@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from 'axios';
 import { ListZellerCustomers } from './graphql/queries';
+import axios, { AxiosResponse } from 'axios';
 
 const ENDPOINT = "https://prrwjjssnvhpbcdwbcwx3nm3zm.appsync-api.ap-southeast-2.amazonaws.com/graphql"
 
@@ -18,7 +18,7 @@ export interface Customer {
 }
 
 export const fetchAllCustomers = async ():Promise<Customer[]> => { 
-  // try {
+
     const response: AxiosResponse = await axios.post(ENDPOINT, JSON.stringify({ query: ListZellerCustomers }), {
       headers: {
         'Content-Type': 'application/json',
@@ -26,8 +26,6 @@ export const fetchAllCustomers = async ():Promise<Customer[]> => {
       },
     });
     return response.data.data.listZellerCustomers.items;
-  // } catch (error) {
-  //   throw error
-  // }
+
 }  
 
