@@ -1,5 +1,16 @@
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+# Zeller Customers React App
+
+## Introduction
+
+This repository contains a simple React app built with TypeScript, integrated with GraphQL APIs. The app focuses on displaying Zeller customers and allows filtering based on user types (Admin/Manager). The project structure, technology stack, GraphQL integration, UI implementation, and performance optimization are outlined below.
+
+## Project Setup
+
+This project was bootstrapped with Create React App. It's configured to interact with the AWS AppSync GraphQL API using the provided `aws-exports.js` configuration.
+
+## Guidelines
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -7,53 +18,79 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-Runs the app in the development mode.<br /> Open
-[http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br /> You will also see any lint errors
-in the console.
+Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br /> See the section
-about
-[running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
+To run unit testing.
+
+### `yarn cypress`
+
+To run e2e testing.
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.<br /> It correctly bundles
-React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br /> Your app is
-ready to be deployed!
-
-See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
+Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified, and the filenames include the hashes. Your app is ready to be deployed!
 
 ### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+\*\*Note: this is a one-way operation. Once you `eject`, you can't go back!
 
-If you aren’t satisfied with the build tool and configuration choices, you can
-`eject` at any time. This command will remove the single build dependency from
-your project.
+## Technology Stack
 
-Instead, it will copy all the configuration files and the transitive
-dependencies (webpack, Babel, ESLint, etc) right into your project so you have
-full control over them. All of the commands except `eject` will still work, but
-they will point to the copied scripts so you can tweak them. At this point
-you’re on your own.
+- React
+- React Query
+- Chakra UI UI Library
+- GraphQL
+- TypeScript
+- Axios
+- Cypress for E2E testing
+- React-testing-library for unit testing
 
-You don’t have to ever use `eject`. The curated feature set is suitable for
-small and middle deployments, and you shouldn’t feel obligated to use this
-feature. However we understand that this tool wouldn’t be useful if you couldn’t
-customize it when you are ready for it.
+## Project Structure
 
-## Learn More
+- The project structure is organized with a simple approach:
+  - Pages are in the `pages` folder, with the `Customers` page.
+  - Components are housed in the `components` folder, with subfolders containing individual components and their respective unit test files.
 
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## GraphQL Integration
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React Query, in combination with Axios, is used to fetch and manage data from a GraphQL API.
+- This combination allows us to benefit from React Query's data management capabilities while leveraging Axios for making HTTP requests to the GraphQL API.
+
+## UI Implementation
+
+**UI Structure:**
+
+- The user interface is structured into sections, including "User Types" and "Admin Users," providing a clear layout for displaying customer data.
+
+**Component Breakdown:**
+
+- The application utilizes two core components:
+  - `RadioButton` handles user type selection and provides an interactive radio button interface.
+  - `UserCard` is responsible for displaying user information, including the user's name and role.
+
+**Responsiveness:**
+
+- The user interface is designed to be responsive, ensuring a seamless user experience across different screen sizes and orientations.
+
+**Styling and Theming:**
+
+- Chakra UI is used for consistent and visually pleasing styling.
+- Custom theming applied to match the design to the provided image (`zeller-customers-design.png`).
+
+**Loading and Error States:**
+
+- The application handles loading and error states gracefully.
+- "Loading..." is displayed during data fetching, and an "Error" message with details is shown in case of an issue.
+
+**Testing:**
+
+- Unit testing is performed using React-testing-library, ensuring that individual components function correctly and produce the expected results.
+- E2E testing is conducted with Cypress, validating the application's functionality as a whole and guaranteeing a smooth end-user experience.
+
+**Performance Optimization:**
+
+- `useMemo` is applied to enhance performance by efficiently categorizing and organizing customer data based on roles (Admin/Manager).
+- It prevents unnecessary re-computation of data, resulting in a more responsive and efficient user experience, particularly when dealing with larger datasets.
+- This optimization minimizes redundant calculations and rendering cycles.

@@ -1,7 +1,7 @@
 import { ListZellerCustomers } from './graphql/queries';
 import axios, { AxiosResponse } from 'axios';
 
-const ENDPOINT = "https://prrwjjssnvhpbcdwbcwx3nm3zm.appsync-api.ap-southeast-2.amazonaws.com/graphql"
+export const ENDPOINT = "https://prrwjjssnvhpbcdwbcwx3nm3zm.appsync-api.ap-southeast-2.amazonaws.com/graphql"
 
 const API_KEY = 'da2-psmv7fcrw5dlpmp5orner2xf7i';
 

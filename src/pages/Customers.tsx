@@ -1,19 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { Role, fetchAllCustomers } from "../api/CustomerClient";
-import { useState } from "react";
+import { ReactNode, useMemo, useState } from "react";
 import {
   Container,
   Divider,
-  HStack,
-  RadioGroup,
   Stack,
   Text,
   VStack,
   useRadioGroup,
 } from "@chakra-ui/react";
 
-import UserCard from "../components/UserCard";
-import RadioButton from "../components/RadioButton";
+import UserCard from "../components/UserCard/UserCard";
+import RadioButton from "../components/RadioButton/RadioButton";
 
 function Customers() {
   const {
@@ -37,12 +35,13 @@ function Customers() {
   const rolesList = [Role.ADMIN, Role.MANAGER];
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "currentRole",
-    defaultValue: Role.ADMIN,
+    defaultValue: selectedRole,
     onChange: handleChange,
   });
 
   const group = getRootProps();
-  const radios = (
+
+  const radioButtons = (
     <VStack {...group} alignItems="stretch">
       {rolesList.map((item) => (
         <RadioButton key={item} {...getRadioProps({ value: item })}>
@@ -52,9 +51,19 @@ function Customers() {
     </VStack>
   );
 
-  const filteredCustomers = customers?.filter(
-    (customer) => customer.role === selectedRole
-  );
+  const customerByRole = useMemo(() => {
+    const mapping: Record<Role, ReactNode[]> = {
+      [Role.ADMIN]: [],
+      [Role.MANAGER]: [],
+    };
+
+    customers?.forEach((customer) => {
+      mapping[customer.role].push(
+        <UserCard key={customer.id} name={customer.name} role={customer.role} />
+      );
+    });
+    return mapping;
+  }, [customers]);
 
   if (isLoading) {
     return <span>Loading...</span>;
@@ -70,12 +79,12 @@ function Customers() {
         <Stack direction="column" spacing="6">
           <Text fontSize="2xl">User Types</Text>
 
-          {radios}
+          {radioButtons}
         </Stack>
 
         <Divider
-          size="xl"
           pt={10}
+          borderBottom="2px"
           borderColor="brandGray.100"
           orientation="horizontal"
         />
@@ -84,17 +93,12 @@ function Customers() {
         <Stack direction="column" spacing="6">
           <Text fontSize="2xl">Admin Users</Text>
 
-          {filteredCustomers?.map((customer) => (
-            <UserCard
-              key={customer.id}
-              name={customer.name}
-              role={customer.role}
-            />
-          ))}
+          {customerByRole[selectedRole]}
         </Stack>
         <Divider
           size="xl"
           py={6}
+          borderBottom="2px"
           borderColor="brandGray.100"
           orientation="horizontal"
         />

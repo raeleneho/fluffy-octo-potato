@@ -6,7 +6,7 @@ interface UserCardProps {
 }
 
 function UserCard({ name, role }: UserCardProps) {
-  const extractFirstName = (fullName: string) => fullName.split(" ")[0];
+  const extractFirstInitial = (fullName: string) => fullName.split(" ")[0];
 
   const capitalizeFirstLetter = (word: string) =>
     word.charAt(0) + word.slice(1).toLowerCase();
@@ -17,10 +17,14 @@ function UserCard({ name, role }: UserCardProps) {
         borderRadius="md"
         color="brandBlue.500"
         backgroundColor="brandBlue.100"
-        name={extractFirstName(name)}
+        name={extractFirstInitial(name)}
+        sx={{
+          width: "40px",
+          height: "40px",
+        }}
       />
       <Box>
-        <Text fontSize="xl">{name}</Text>
+        <Text fontSize="lg">{name}</Text>
         <Text fontSize="sm" color="brandGray.400">
           {capitalizeFirstLetter(role)}
         </Text>

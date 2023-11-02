@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unchecked Radio 1`] = `
+<div>
+  <div
+    class="chakra-stack css-1mlvmbj"
+    data-test-id="user-card"
+  >
+    <span
+      class="chakra-avatar css-f4zlsr"
+    >
+      <div
+        aria-label="Rae"
+        class="chakra-avatar__initials css-0"
+        role="img"
+      >
+        R
+      </div>
+    </span>
+    <div
+      class="css-0"
+    >
+      <p
+        class="chakra-text css-1ezsviu"
+      >
+        Rae
+      </p>
+      <p
+        class="chakra-text css-1f6lyav"
+      >
+        boss
+      </p>
+    </div>
+  </div>
+</div>
+`;

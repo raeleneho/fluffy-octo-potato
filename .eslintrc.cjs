@@ -13,11 +13,4 @@ module.exports = {
   rules: {
     "jest/expect-expect": "off",
   },
-
-  // rules: {
-  //   "react-refresh/only-export-components": [
-  //     "warn",
-  //     { allowConstantExport: true },
-  //   ],
-  // },
 };
